@@ -18,19 +18,13 @@
 var exec = require('child_process').exec;
 
 module.exports = function (robot) {
-  robot.respond(/motivate/i, function (res) {
+  return robot.respond(/(motivate).*/i, function (res) {
     var cmd = 'motivator --motivate';
     exec(cmd, function (error, stdout, stderr) {
       if (error) { return robot.logger.error(stderr); }
-      return res.send(stdout);
-    });
-  });
 
-  return robot.respond(/motivate me/i, function (res) {
-    var cmd = 'motivator --motivate';
-    exec(cmd, function (error, stdout, stderr) {
-      if (error) { return robot.logger.error(stderr); }
-      return res.reply(stdout);
+      stdout = stdout.replace(/(\[.+?\m)/gm, "");
+      return res.send(stdout);
     });
   });
 };

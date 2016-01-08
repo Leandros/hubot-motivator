@@ -2,7 +2,7 @@
 
 A hubot script to motivate you
 
-See [`src/motivator.coffee`](src/motivator.js) for full documentation.
+See [`src/motivator.js`](src/motivator.js) for full documentation.
 
 ## Installation
 
